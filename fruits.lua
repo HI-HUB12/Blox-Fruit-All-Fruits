@@ -6,8 +6,22 @@ local fruits = {
     "Barrier", "Spin", "Spike", "Bomb", "Rocket" 
 }
 
+-- Mock inventory table
+local inventory = {}
+
 function onUse() 
     for _, fruit in ipairs(fruits) do 
-        TriggerServerEvent("fruit-giver:eat", fruit) 
+        -- Store each fruit in the inventory
+        table.insert(inventory, fruit) 
+        print("Stored in inventory: " .. fruit)  -- Optional: Print the stored fruit
     end 
+end
+
+-- Call the function to store the fruits in the inventory
+onUse()
+
+-- Optional: Print the entire inventory to verify
+print("Inventory: ")
+for _, item in ipairs(inventory) do
+    print(item)
 end
